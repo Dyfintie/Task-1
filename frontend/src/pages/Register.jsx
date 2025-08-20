@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import api from "../../lib/api"; // adjust path if needed
+import api from "../../lib/api";
 import { motion } from "framer-motion";
 
 export default function Register() {
@@ -24,8 +24,7 @@ export default function Register() {
 
     setLoading(true);
     try {
-      const { data } = await api.post("/auth/register", form);
-      console.log("Registration success:", data);
+      await api.post("/auth/register", form);
       navigate("/login");
     } catch (err) {
       setError(err?.response?.data?.message || "Registration failed");
@@ -35,19 +34,17 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-black text-white p-4">
       <motion.div
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
+        initial={{ y: 40, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="bg-white w-full max-w-md p-8 rounded-3xl shadow-2xl"
+        className="w-full max-w-md p-8 rounded-3xl bg-zinc-900 shadow-2xl border border-zinc-700"
       >
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
-          Create Account
-        </h2>
+        <h2 className="text-3xl font-bold text-center mb-6">Create Account</h2>
 
         {error && (
-          <p className="text-red-600 text-sm text-center mb-4">{error}</p>
+          <p className="text-red-500 text-sm text-center mb-4">{error}</p>
         )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -57,7 +54,7 @@ export default function Register() {
             placeholder="Full Name"
             value={form.name}
             onChange={handleChange}
-            className="w-full px-4 py-3 rounded-2xl bg-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-400 transition"
+            className="w-full px-4 py-3 rounded-2xl bg-zinc-800 text-white focus:outline-none focus:ring-2 focus:ring-white transition"
             required
           />
           <input
@@ -66,7 +63,7 @@ export default function Register() {
             placeholder="Email"
             value={form.email}
             onChange={handleChange}
-            className="w-full px-4 py-3 rounded-2xl bg-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-400 transition"
+            className="w-full px-4 py-3 rounded-2xl bg-zinc-800 text-white focus:outline-none focus:ring-2 focus:ring-white transition"
             required
           />
           <input
@@ -75,23 +72,23 @@ export default function Register() {
             placeholder="Password"
             value={form.password}
             onChange={handleChange}
-            className="w-full px-4 py-3 rounded-2xl bg-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-400 transition"
+            className="w-full px-4 py-3 rounded-2xl bg-zinc-800 text-white focus:outline-none focus:ring-2 focus:ring-white transition"
             required
           />
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold shadow-lg hover:scale-105 transform transition disabled:opacity-60"
+            className="w-full py-3 rounded-2xl bg-white text-black font-semibold shadow-lg hover:bg-zinc-200 hover:scale-105 transform transition disabled:opacity-60"
           >
             {loading ? "Registering..." : "Register"}
           </button>
         </form>
 
-        <p className="text-sm text-center mt-4 text-gray-600">
+        <p className="text-sm text-center mt-4 text-gray-400">
           Already have an account?{" "}
           <span
             onClick={() => navigate("/login")}
-            className="text-purple-600 font-semibold cursor-pointer hover:underline"
+            className="text-white font-semibold cursor-pointer hover:underline"
           >
             Login
           </span>

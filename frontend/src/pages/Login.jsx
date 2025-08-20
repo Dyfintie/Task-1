@@ -29,54 +29,76 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen max-w-full  flex items-center justify-center bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-gray-900 to-black p-4">
       <motion.form
         onSubmit={go}
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
+        initial={{ scale: 0.8, opacity: 0, y: 20 }}
+        animate={{ scale: 1, opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="w-full max-w-md p-8 space-y-6 rounded-3xl bg-white shadow-2xl"
+        className="w-full max-w-md p-10 space-y-6 rounded-3xl bg-white dark:bg-black text-black dark:text-white shadow-2xl border border-gray-200 dark:border-gray-700"
       >
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-4">
+        <motion.h2
+          initial={{ y: -20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="text-4xl font-extrabold text-center"
+        >
           Welcome Back
-        </h2>
-        {err && <p className="text-red-600 text-sm text-center">{err}</p>}
+        </motion.h2>
 
-        <div className="flex flex-col space-y-4">
-          <input
+        {err && (
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-white bg-black text-sm text-center"
+          >
+            {err}
+          </motion.p>
+        )}
+
+        <div className="flex flex-col space-y-5">
+          <motion.input
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email"
             type="email"
-            className="w-full px-4 py-3 rounded-2xl bg-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-400 transition"
+            whileFocus={{ scale: 1.02 }}
+            className="w-full px-5 py-3 rounded-2xl bg-gray-100 dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-500 transition shadow-inner"
             required
           />
-          <input
+          <motion.input
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             type="password"
             placeholder="Password"
-            className="w-full px-4 py-3 rounded-2xl bg-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-400 transition"
+            whileFocus={{ scale: 1.02 }}
+            className="w-full px-5 py-3 rounded-2xl bg-gray-100 dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-500 transition shadow-inner"
             required
           />
         </div>
 
-        <button
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
           disabled={loading}
-          className="w-full py-3 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold shadow-lg hover:scale-105 transform transition disabled:opacity-60"
+          className="w-full py-3 rounded-2xl bg-black dark:bg-white text-white dark:text-black font-bold shadow-lg hover:shadow-xl transition disabled:opacity-60"
         >
           {loading ? "Logging in..." : "Login"}
-        </button>
+        </motion.button>
 
-        <p className="text-center text-gray-500">
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="text-center text-gray-600 dark:text-gray-400"
+        >
           Don't have an account?{" "}
           <span
             onClick={() => nav("/register")}
-            className="text-purple-600 font-semibold cursor-pointer hover:underline"
+            className="font-semibold cursor-pointer hover:underline text-black dark:text-white"
           >
             Sign up
           </span>
-        </p>
+        </motion.p>
       </motion.form>
     </div>
   );

@@ -48,12 +48,12 @@ export default function Problemset() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto mt-12 px-4">
+    <div className="max-w-7xl mx-auto mt-12 px-4 pb-15">
       <motion.h2
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-3xl font-bold mb-8 text-center text-blue-600"
+        className="text-3xl font-bold mb-8 text-center text-black"
       >
         Problem Categories
       </motion.h2>
@@ -62,13 +62,13 @@ export default function Problemset() {
         {categories.map((cat) => (
           <div
             key={cat._id}
-            className="border rounded-xl overflow-hidden shadow-md bg-white"
+            className="border border-black rounded-xl overflow-hidden bg-white shadow"
           >
             <button
-              className="w-full px-4 py-3 bg-gradient-to-r from-blue-50 to-purple-50 text-left flex justify-between items-center hover:from-blue-100 hover:to-purple-100 transition"
+              className="w-full px-4 py-3 bg-white text-left flex justify-between items-center hover:bg-gray-100 transition"
               onClick={() => toggleCategory(cat._id)}
             >
-              <span className="font-medium text-gray-800">{cat.title}</span>
+              <span className="font-medium text-black">{cat.title}</span>
               <span
                 className={`transform transition-transform ${
                   expandedCat === cat._id ? "rotate-180" : "rotate-0"
@@ -97,17 +97,19 @@ export default function Problemset() {
                     questionsMap[cat._id].map((q) => (
                       <li
                         key={q._id || q.id}
-                        className="py-2 border-b last:border-b-0 flex justify-between items-center px-2 hover:bg-blue-50 rounded transition"
+                        className="py-2 border-b border-gray-300 last:border-b-0 flex justify-between items-center px-2 hover:bg-gray-100 rounded transition"
                       >
-                        <span>{q.title || q.question}</span>
+                        <span className="text-black">
+                          {q.title || q.question}
+                        </span>
                         {q.url && (
                           <a
                             href={q.url}
                             target="_blank"
                             rel="noreferrer"
-                            className="text-red-600 hover:scale-110 transform transition"
+                            className="text-black hover:scale-110 transform transition"
                           >
-                            <Youtube size={22} />
+                            <Youtube size={20} />
                           </a>
                         )}
                       </li>
