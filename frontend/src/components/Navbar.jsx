@@ -24,7 +24,7 @@ export default function Navbar() {
             to="/"
             className="text-2xl font-extrabold text-black tracking-wide hover:text-gray-600 transition-colors duration-200"
           >
-            Task-1
+            ProblemIterator
           </Link>
         </motion.div>
 
@@ -55,7 +55,7 @@ export default function Navbar() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={handleLogout}
-                className=" btn px-6 py-2 bg-black text-white rounded-2xl hover:bg-gray-800 font-semibold shadow-md transition-colors duration-200"
+                className=" btn px-6 py-2 bg-black text-white rounded-2xl hover:bg-gray-200 font-semibold shadow-md transition-colors duration-200"
               >
                 Logout
               </motion.button>

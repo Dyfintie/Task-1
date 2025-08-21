@@ -109,7 +109,7 @@ export default function Problemset() {
                             rel="noreferrer"
                             className="text-black hover:scale-110 transform transition"
                           >
-                            <Youtube size={20} />
+                            <Youtube size={20} color="red" />
                           </a>
                         )}
                       </li>
