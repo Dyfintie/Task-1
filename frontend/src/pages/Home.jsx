@@ -10,10 +10,10 @@ export default function Home() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="text-5xl md:text-7xl font-extrabold leading-tight relative text-black"
+        className="text-5xl md:text-7xl font-extrabold leading-tight relative text-white"
       >
         Welcome to{" "}
-        <span className="bg-gradient-to-r from-black to-gray-700 bg-clip-text text-transparent">
+        <span className="text-white bg-clip-text ">
           ProblemIterator
         </span>
       </motion.h1>
@@ -22,7 +22,7 @@ export default function Home() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.8 }}
-        className="text-lg md:text-xl text-gray-800 max-w-2xl mb-12"
+        className="text-lg md:text-xl text-white max-w-2xl mb-12"
       >
         Sharpen your coding skills with structured problem sets. Track your
         progress, bookmark questions, and learn smarter — not harder.
